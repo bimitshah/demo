@@ -1,0 +1,17 @@
+name: ci-for-demo
+
+on:
+  push:
+    branches:
+      - "main"
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - id: first
+        uses: bimitshah/workflows/.github/workflows/java-compile.yaml@main
+       - id: second
+        uses: bimitshah/workflows/.github/workflows/docker-build.yaml@main
+ 
