@@ -9,4 +9,5 @@ jobs:
   build:
     runs-on: ubuntu-latest
     steps:
-      - uses: bimitshah/workflows/.github/workflows/java-compile@main
+      - uses: actions/checkout@v3
+      - uses: bimitshah/workflows/java-compile@main
