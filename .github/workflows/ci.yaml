@@ -9,7 +9,7 @@ jobs:
   build:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v3
+      - use: actions/checkout@v3
       - id: first
         uses: bimitshah/workflows/.github/workflows/java-compile.yaml@main
       - id: second
