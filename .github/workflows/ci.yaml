@@ -11,3 +11,4 @@ jobs:
     steps:
       - uses: actions/checkout@v3
       - uses: bimitshah/workflows/java-compile@main
+      - uses: bimitshah/workflows/docker-build@main
