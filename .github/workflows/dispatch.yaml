@@ -1,0 +1,16 @@
+name: dispatch
+on:
+  workflow_dispatch:
+    inputs:
+      image:
+        description: "image name generated"
+        required: true
+        default: "nginx:latest"
+
+jobs:
+  sample:
+    run-on: ubuntu-latest
+    steps:
+      - name: print
+        run: |
+          echo ${{ github.event.inputs.image }}
