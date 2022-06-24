@@ -9,7 +9,7 @@ on:
 
 jobs:
   sample:
-    run-on: ubuntu-latest
+    runs-on: ubuntu-latest
     steps:
       - name: print
         run: |
