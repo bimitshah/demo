@@ -10,8 +10,8 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
-      - uses: bimitshah/workflows/java-compile@main
-      - uses: bimitshah/workflows/docker-build@main
       - name: print
         run: |
           echo "normal step executed"
+      - uses: bimitshah/workflows/java-compile@main
+      - uses: bimitshah/workflows/docker-build@main
