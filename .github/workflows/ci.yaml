@@ -9,9 +9,9 @@ jobs:
   call-workflow:
     uses: bimitshah/workflows/.github/workflows/test.yaml@main
   trigger-workflow:
+    needs: call-workflow
     runs-on: ubuntu-latest
     steps:
       - id: print
         run: |
           echo ${{ needs.call-workflow.outputs.name_wrapper }}
-          echo ${{ steps.build_wrapper.outputs.name }}
