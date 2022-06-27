@@ -13,5 +13,5 @@ jobs:
     steps:
       - id: print
         run: |
+          echo ${{ needs.call-workflow.outputs.name_wrapper }}
           echo ${{ steps.build_wrapper.outputs.name }}
-          echo ${{ jobs.call-workflow.outputs.name_wrapper }}
