@@ -6,4 +6,6 @@ RUN cd /usr/src/app \
     && npm install node-static
 
 EXPOSE 80000
+
+
 CMD ["npm", "start"]
