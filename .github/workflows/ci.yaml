@@ -13,6 +13,8 @@ jobs:
         id: meta
         uses: docker/metadata-action@v4
         with:
+          images: |
+            name=prefix
           tags: |
             type=ref,event=branch
             type=semver,pattern={{version}}
