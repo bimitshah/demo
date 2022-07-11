@@ -15,9 +15,9 @@ jobs:
         uses: docker/metadata-action@v4
         with:
           images: |
-            name=prefix,enable=true,suffix=_${{ github.run_number }}
+            name=prefix,enable=true
           tags: |
-            type=ref,event=branch
+            type=ref,event=branch,suffix=_${{ github.run_number }}
             type=semver,pattern={{version}}
       - id: print
         env:
