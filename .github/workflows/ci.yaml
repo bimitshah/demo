@@ -7,7 +7,6 @@ on:
 
 jobs:
   trigger-workflow:
-    needs: call-workflow
     runs-on: ubuntu-latest
     steps:
       - name: Docker meta
