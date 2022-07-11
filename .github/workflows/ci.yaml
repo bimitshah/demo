@@ -6,12 +6,17 @@ on:
       - "main"
 
 jobs:
-  call-workflow:
-    uses: bimitshah/workflows/.github/workflows/test.yaml@main
   trigger-workflow:
     needs: call-workflow
     runs-on: ubuntu-latest
     steps:
+      - name: Docker meta
+        id: meta
+        uses: docker/metadata-action@v4
+        with:
+          tags: |
+            type=ref,event=branch
+            type=semver,pattern={{version}}
       - id: print
         run: |
-          echo ${{ needs.call-workflow.outputs.name_wrapper }}
+          echo ${{ steps.meta.outputs.tags }}
