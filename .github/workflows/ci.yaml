@@ -14,7 +14,7 @@ jobs:
         uses: docker/metadata-action@v4
         with:
           images: |
-            name=prefix,enable=false
+            name=prefix,enable=true
           flavor: |
             suffix=_${{ github.run_number }}
           tags: |
@@ -23,3 +23,4 @@ jobs:
       - id: print
         run: |
           echo ${{ steps.meta.outputs.tags }}
+          echo ${{ steps.meta.outputs }}
