@@ -4,7 +4,7 @@ on:
   push:
     branches:
       - "main"
-      - "feature"
+      - "feature/PPAC-89"
 
 jobs:
   trigger-workflow:
