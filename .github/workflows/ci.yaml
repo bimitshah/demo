@@ -12,6 +12,8 @@ on:
 jobs:
   trigger-workflow:
     runs-on: ubuntu-latest
+    container:
+      image: ${{ secrets.BUILDER }}
     steps:
       - name: Docker meta
         id: meta
@@ -31,3 +33,4 @@ jobs:
         run: |
           echo ${{ fromJSON(steps.meta.outputs.json).labels['org.opencontainers.image.version'] }}
           echo ${BUILD_ARG}
+          uname -r
