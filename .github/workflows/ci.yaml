@@ -19,15 +19,15 @@ jobs:
         with:
           images: |
             name=prefix,enable=true
+          flavor: |
+            latest=false
           tags: |
             type=ref,event=branch,suffix=_${{ github.run_number }}
-            type=semver,pattern={{version}}
+            type=semver,pattern={{raw}}
       - id: print
         env:
           BUILD_TAG: ${{ fromJSON(steps.meta.outputs.json).labels['org.opencontainers.image.version'] }}
           TEST: ${{ secrets.TEST }}
         run: |
-          echo ${{ steps.meta.outputs.tags }}
-          echo ${TEST}
           echo ${{ fromJSON(steps.meta.outputs.json).labels['org.opencontainers.image.version'] }}
           echo ${BUILD_ARG}
