@@ -13,7 +13,7 @@ jobs:
   trigger-workflow:
     runs-on: ubuntu-latest
     container:
-      image: ${{ secrets.BUILDER }}
+      image: debian:bookworm-slim
     steps:
       - name: Docker meta
         id: meta
@@ -24,7 +24,8 @@ jobs:
           flavor: |
             latest=false
           tags: |
-            type=ref,event=branch,suffix=_${{ github.run_number }}
+            type=ref,event=branch,suffix=_${{ github.run_number }},value=${{ secrets.TEST }},enable=${{ secrets.TEST != "" }}
+            type=ref,event=branch,suffix=_${{ github.run_number }},enable=${{ secrets.TEST == "" }}
             type=semver,pattern={{raw}}
       - id: print
         env:
@@ -33,4 +34,3 @@ jobs:
         run: |
           echo ${{ fromJSON(steps.meta.outputs.json).labels['org.opencontainers.image.version'] }}
           echo ${BUILD_ARG}
-          uname -r
