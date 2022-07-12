@@ -13,10 +13,9 @@ jobs:
   trigger-workflow:
     runs-on: ubuntu-latest
     outputs:
-      output1: ${{ steps.step1.outputs.name_wrapper }}
+      output1: ${{ steps.build_wrapper.outputs.image }}
     steps:
       - uses: bimitshah/workflows/java-compile@main
-        id: step1
       - name: Docker meta
         id: meta
         uses: docker/metadata-action@v4
