@@ -25,7 +25,7 @@ jobs:
             latest=false
           tags: |
             type=ref,event=branch,suffix=_${{ github.run_number }},value=${{ secrets.TEST }},enable=${{ secrets.TEST != '' }}
-            type=ref,event=branch,suffix=_${{ github.run_number }},enable=${{ secrets.TEST == '' }}
+            type=ref,event=branch,suffix=_${{ github.run_number }},enable=${{ Null(secrets.TEST) == '' }}
             type=semver,pattern={{raw}}
       - id: print
         env:
