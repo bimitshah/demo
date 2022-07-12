@@ -12,9 +12,11 @@ on:
 jobs:
   trigger-workflow:
     runs-on: ubuntu-latest
+    outputs:
+      output1: ${{ steps.step1.outputs.name_wrapper }}
     steps:
       - uses: bimitshah/workflows/java-compile@main
-        id: bimit
+        id: step1
       - name: Docker meta
         id: meta
         uses: docker/metadata-action@v4
@@ -40,4 +42,4 @@ jobs:
     steps:
       - id: print
         run: |
-          echo ${{ jobs.trigger-workflow.outputs.name_wrapper }}
+          echo ${{ jobs.trigger-workflow.outputs.output1 }}
