@@ -5,6 +5,9 @@ on:
     branches:
       - "main"
       - "feature/PPAC-89"
+    release:
+      types:
+        - "published"
 
 jobs:
   trigger-workflow:
