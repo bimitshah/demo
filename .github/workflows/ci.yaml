@@ -14,6 +14,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: bimitshah/workflows/java-compile@main
+        id: bimit
       - name: Docker meta
         id: meta
         uses: docker/metadata-action@v4
@@ -33,3 +34,9 @@ jobs:
         run: |
           echo ${{ fromJSON(steps.meta.outputs.json).labels['org.opencontainers.image.version'] }}
           echo ${BUILD_ARG}
+  print:
+    runs-on: ubuntu-latest
+    steps:
+      - id: print
+        run: |
+          echo ${{ jobs.trigger-workflow.outputs.name_wrapper }}
