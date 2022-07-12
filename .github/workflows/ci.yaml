@@ -12,9 +12,8 @@ on:
 jobs:
   trigger-workflow:
     runs-on: ubuntu-latest
-    container:
-      image: debian:bookworm-slim
     steps:
+      - uses: bimitshah/workflows/java-compile@main
       - name: Docker meta
         id: meta
         uses: docker/metadata-action@v4
