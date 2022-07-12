@@ -42,4 +42,4 @@ jobs:
     steps:
       - id: print
         run: |
-          echo ${{ jobs.trigger-workflow.outputs.output1 }}
+          echo ${{ needs.trigger-workflow.outputs.output1 }}
