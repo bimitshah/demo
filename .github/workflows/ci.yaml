@@ -32,6 +32,4 @@ jobs:
             type=semver,pattern={{major}}.{{minor}}
       - id: print2
         run: |
-          echo ${{ needs.trigger-workflow.outputs.image }}
-          echo ${{ steps.meta.outputs.tags }}
           echo ${{ fromJson(steps.meta.outputs.tags) }}
