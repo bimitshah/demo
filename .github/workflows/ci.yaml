@@ -12,34 +12,11 @@ on:
 jobs:
   trigger-workflow:
     runs-on: ubuntu-latest
-    outputs:
-      output1: ${{ steps.wrapper.outputs.image }}
-    steps:
-      - uses: bimitshah/workflows/java-compile@main
-        id: wrapper
-      - name: Docker meta
-        id: meta
-        uses: docker/metadata-action@v4
-        with:
-          images: |
-            name=prefix,enable=true
-          flavor: |
-            latest=false
-          tags: |
-            type=ref,event=branch,suffix=_${{ github.run_number }}
-            type=raw,enable=true,priority=99,value=${{ secrets.TEST }}
-            type=semver,pattern={{raw}}
-      - id: print
-        env:
-          BUILD_TAG: ${{ fromJSON(steps.meta.outputs.json).labels['org.opencontainers.image.version'] }}
-          TEST: ${{ secrets.TEST }}
-        run: |
-          echo ${{ fromJSON(steps.meta.outputs.json).labels['org.opencontainers.image.version'] }}
-          echo ${BUILD_ARG}
+    uses: bimitshah/workflows/.github/workflows/test.yaml@main
   print:
     runs-on: ubuntu-latest
     needs: trigger-workflow
     steps:
       - id: print
         run: |
-          echo ${{ needs.trigger-workflow.outputs.output1 }}
+          echo ${{ needs.trigger-workflow.outputs.image }}
