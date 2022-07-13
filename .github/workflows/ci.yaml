@@ -32,4 +32,4 @@ jobs:
             type=semver,pattern={{major}}.{{minor}}
       - id: print2
         run: |
-          echo ${{ steps.meta.outputs.tag }}
+          echo ${{ steps.meta.outputs.tags }}
