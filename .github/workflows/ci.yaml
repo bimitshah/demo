@@ -8,6 +8,13 @@ on:
   release:
     types:
       - "published"
+  workflow_dispatch:
+    inputs:
+      environment:
+        type: environment
+        description: test
+        required: false
+        default: dev
 
 jobs:
   trigger-workflow:
@@ -19,6 +26,7 @@ jobs:
       - id: print
         run: |
           echo ${{ needs.trigger-workflow.outputs.image }}
+          echo ${{ github.events.inputs.environment }}
       - name: Docker meta
         id: meta
         uses: docker/metadata-action@v4
