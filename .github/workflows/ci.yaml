@@ -13,7 +13,6 @@ on:
       environment:
         type: environment
         description: test
-        required: false
         default: dev
 
 jobs:
@@ -26,7 +25,7 @@ jobs:
       - id: print
         run: |
           echo ${{ needs.trigger-workflow.outputs.image }}
-          echo ${{ github.events.inputs.environment }}
+          echo ${{ github.events.inputs.environment || 'new dev'}}
       - name: Docker meta
         id: meta
         uses: docker/metadata-action@v4
