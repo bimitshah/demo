@@ -18,7 +18,6 @@ on:
 jobs:
   print:
     runs-on: ubuntu-latest
-    needs: trigger-workflow
     steps:
       - id: print
         run: |
