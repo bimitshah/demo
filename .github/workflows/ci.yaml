@@ -12,6 +12,7 @@ on:
     inputs:
       environment:
         type: environment
+        required: true
 
 jobs:
   print:
@@ -19,4 +20,5 @@ jobs:
     steps:
       - id: print
         run: |
-          echo ${{ github.events.inputs.environment || 'new dev'}}
+          echo ${{ inputs.environment }}
+          echo ${{ inputs.environment || 'new dev'}}
