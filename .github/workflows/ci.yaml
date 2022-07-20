@@ -12,8 +12,6 @@ on:
     inputs:
       environment:
         type: environment
-        description: test
-        default: dev
 
 jobs:
   print:
